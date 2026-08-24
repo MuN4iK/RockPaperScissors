@@ -1,0 +1,156 @@
+.pageBackground {
+    --page-gradient: linear-gradient(90deg,
+            #b67fe6,
+            #94BBE9);
+    background: var(--page-gradient);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #2b3038;
+    color: #757575;
+    border-radius: 20px;
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    overflow: hidden;
+}
+
+.selectorContainer {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #b67fe6;
+}
+
+/* .selectorContainer::after,
+.otherPlayerContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+
+    background: linear-gradient(90deg,
+            #b67fe6,
+            transparent);
+
+    background-attachment: fixed;
+} */
+
+.selectorTitle {
+    justify-self: normal;
+    transform: translateY(-50px);
+}
+
+.rockIcon,
+.scissorsIcon,
+.paperIcon {
+    cursor: pointer;
+}
+
+.rockIcon,
+.scissorsIcon {
+    width: 150px;
+    height: 150px;
+}
+
+.scissorsIcon {
+    padding-left: 27px;
+}
+
+.paperIcon {
+    width: 100px;
+    height: 100px;
+    padding-right: 3px;
+    padding-bottom: 27px;
+}
+
+.gameContainer {
+    flex: 4;
+}
+
+.waitingText {
+    font-size: 20px;
+
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dots::after {
+    position: fixed;
+    content: '';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    25% {
+        content: '.';
+    }
+
+    50% {
+        content: '..';
+    }
+
+    75% {
+        content: '...';
+    }
+
+    100% {
+        content: '';
+    }
+}
+
+.otherPlayerContainer {
+    flex: 3;
+    border-left: 2px solid #b67fe6;
+}
+
+.afterMatchText {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.matchResultText {
+    padding-top: 50%;
+}
+
+.backButtonContainer {
+    margin-top: auto;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 7px;
+    gap: 2px;
+}
+
+.backButton {
+    text-decoration: none;
+    color: black;
+}
+
+.backButtonImg {
+    width: 15px;
+    height: 15px;
+}

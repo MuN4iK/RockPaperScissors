@@ -1,0 +1,86 @@
+.pageBackground {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 100dvh;
+    background: linear-gradient(90deg, #EEAECA, #94BBE9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+    background: white;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 35px;
+}
+
+.pageTitle {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 715;
+}
+
+.loginInp {
+    width: 55%;
+    height: 26px;
+    border-radius: 25px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    padding-right: 5px;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.loginImg {
+    width: 15px;
+    height: 15px;
+    padding-left: 7px;
+    padding-right: 5px;
+    border-right: 1px solid black;
+}
+
+.loginDiv {
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    width: 65%;
+    height: 36px;
+}
+
+.loginButton {
+    width: 25%;
+    height: 35px;
+    border-radius: 18px;
+    border: 2px solid black;
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+    font-size: 15px;
+    transition: background-color .75s, color .75s, box-shadow 0.75s;
+}
+
+.loginButton:active {
+    background: black;
+    color: white;
+    box-shadow: 2px 8px 10px grey;
+}
+
+.loginLink {
+    text-decoration: none;
+    color: #EEAECA;
+    cursor: pointer;
+}
+
+.errorText {
+    color: red;
+    font-size: 15px;
+}

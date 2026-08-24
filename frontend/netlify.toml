@@ -1,0 +1,5 @@
+[[redirects]]
+    from = "/api/*"
+    ro = "https://rockpaperscissors-h73t.onrender.com/api/:splat"
+    status = 200
+    force = true

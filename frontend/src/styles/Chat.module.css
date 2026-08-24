@@ -1,0 +1,102 @@
+.chatPage {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+}
+
+.selectedUserInfo {
+    width: 100%;
+    border-bottom: 2px solid #b67fe6;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 10px 0 10px 10px;
+    color: #757575;
+
+}
+
+.selectedUserAvatar {
+    width: 12px;
+    height: 12px;
+}
+
+.sendDiv {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #b67fe6;
+    padding: 10px 0 10px 5px;
+}
+
+.sendButton {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    border: 1px solid #515151;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.sendInput {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    width: 97%;
+    height: 18px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 15px;
+    resize: none;
+    background: transparent;
+    color: #757575;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.receiverTypeMessage {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 10px;
+    max-width: 400px;
+    height: 15px;
+    align-self: flex-start;
+    overflow-wrap: anywhere;
+    background: #757575;
+}
+
+.senderTypeMessage {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 10px;
+    max-width: 400px;
+    min-height: 15px;
+    max-height: 100px;
+    align-self: flex-end;
+    background: #71b4d7;
+    overflow-wrap: anywhere;
+}
+
+.playButton {
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    background: transparent;
+    border: 1px solid #757575;
+    color: #757575;
+    cursor: pointer;
+}
