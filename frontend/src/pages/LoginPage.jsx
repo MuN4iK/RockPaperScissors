@@ -12,7 +12,7 @@ export default function LoginPage() {
 
     async function login() {
         setCorrectPassword(true)
-        const response = await fetch('https://rockpaperscissorstestgame.netlify.app/api/login', {
+        const response = await fetch('/api/login', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
