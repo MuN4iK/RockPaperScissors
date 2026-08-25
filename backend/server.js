@@ -12,12 +12,24 @@ const users = [
     {
         id: 1,
         username: "Ivan",
-        password: '123'
+        password: 'password1'
     },
     {
         id: 2,
         username: "Anna",
-        password: '456'
+        password: 'password2'
+    }, {
+        id: 3,
+        username: "Roma",
+        password: 'password3'
+    }, {
+        id: 4,
+        username: "Andrei",
+        password: 'password4'
+    }, {
+        id: 5,
+        username: "Noah",
+        password: 'password5'
     }
 ]
 
