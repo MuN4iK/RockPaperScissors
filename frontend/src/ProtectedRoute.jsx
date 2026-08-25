@@ -29,7 +29,7 @@ export default function ProtectedRoute({ children }) {
                 setIsAuthenticated(true)
             }
         } catch (err) {
-            console.err(err)
+            console.error(err)
             setIsAuthenticated(false);
         } finally {
 
