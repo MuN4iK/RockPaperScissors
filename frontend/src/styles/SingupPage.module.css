@@ -90,3 +90,10 @@
     color: red;
     font-size: 15px;
 }
+
+.infoImg {
+    width: 17px;
+    height: 17px;
+    margin-left: auto;
+    padding-right: 7px;
+}

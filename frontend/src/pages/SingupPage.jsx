@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/SingupPage.module.css'
 import { useState } from 'react'
+import useCheckPassword from '../hooks/useCheckPassword'
 
 export default function SingupPage() {
     const navigate = useNavigate()
@@ -10,32 +11,35 @@ export default function SingupPage() {
     const [correctPassword, setCorrectPassword] = useState(true)
 
     async function singup() {
-        setCorrectPassword(true)
-        if (password === repeatPassword) {
+        if (useCheckPassword(password)) {
             setCorrectPassword(true)
-            const response = await fetch('/api/singup', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username,
-                    password
+            if (password === repeatPassword) {
+                setCorrectPassword(true)
+                const response = await fetch('/api/singup', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password
+                    })
                 })
-            })
 
-            const data = await response.json()
-            console.log(data)
+                const data = await response.json()
+                console.log(data)
 
-            if (response.ok) {
-                localStorage.setItem('token', data.token)
-                navigate('/', { replace: true })
+                if (response.ok) {
+                    localStorage.setItem('token', data.token)
+                    navigate('/', { replace: true })
 
+                }
+            } else {
+                setCorrectPassword(false)
             }
         } else {
             setCorrectPassword(false)
         }
-
     }
 
     return (
@@ -54,8 +58,8 @@ export default function SingupPage() {
                         type="password"
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
-
                     />
+                    <img src="/img/info.png" className={styles.infoImg} title={` Password must have atleast: \n •8 characters\n •one uppercase character\n •one number`} />
                 </div>
                 <div className={styles.singupDiv}>
                     <img src="/img/password.png" className={styles.singupImg} /> <input className={styles.singupInp}
@@ -64,8 +68,9 @@ export default function SingupPage() {
                         onChange={(e) => setRepeatPassword(e.target.value)}
 
                     />
+
                 </div>
-                <p style={{ display: !correctPassword ? 'block' : 'none' }} className={styles.errorText}>Passwords do not match!</p>
+                {!correctPassword && <p className={styles.errorText}>Passwords do not match or isn`t correct!</p>}
                 <button className={styles.singupButton} onClick={() => singup()} >Create account</button>
                 <h4 className={styles.bottomText}>Already have account?<Link className={styles.singupLink} to='/login'>Log in!</Link></h4>
             </div>

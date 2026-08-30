@@ -1,6 +1,7 @@
 import { useState } from "react"
 import styles from '../styles/LoginPage.module.css'
 import { useNavigate, Link } from "react-router-dom"
+import useCheckPassword from "../hooks/useCheckPassword"
 
 export default function LoginPage() {
     const navigate = useNavigate()
@@ -11,25 +12,29 @@ export default function LoginPage() {
 
 
     async function login() {
-        setCorrectPassword(true)
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username,
-                password
+        if (useCheckPassword(password)) {
+            setCorrectPassword(true)
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
             })
-        })
 
 
-        const data = await response.json()
-        console.log(data)
+            const data = await response.json()
+            console.log(data)
 
-        if (response.ok) {
-            localStorage.setItem('token', data.token)
-            navigate('/', { replace: true })
+            if (response.ok) {
+                localStorage.setItem('token', data.token)
+                navigate('/', { replace: true })
+            } else {
+                setCorrectPassword(false)
+            }
         } else {
             setCorrectPassword(false)
         }
