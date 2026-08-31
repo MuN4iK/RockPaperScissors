@@ -83,6 +83,7 @@ export default function Chat({ selectedUser, token, showButton, chatType, matchI
         }
     }
     useEffect(() => {
+        setChat([])
         if (!selectedUser) return
 
         intervalRef.current = setInterval(() => {

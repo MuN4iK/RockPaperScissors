@@ -84,3 +84,30 @@
     color: red;
     font-size: 15px;
 }
+
+.showOrHidePasswordContainer {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    padding-right: 7px;
+    cursor: pointer;
+    position: relative;
+}
+
+.showOrHidePasswordIcon {
+    transition: opacity 0.5s ease;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.invisible {
+    opacity: 0;
+}

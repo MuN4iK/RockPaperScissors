@@ -1,17 +1,26 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/SingupPage.module.css'
-import { useState } from 'react'
-import useCheckPassword from '../hooks/useCheckPassword'
+import { useRef, useState } from 'react'
+import checkPassword from '../functions/checkPassword'
 
 export default function SingupPage() {
+    const inputs = useRef([])
     const navigate = useNavigate()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
     const [correctPassword, setCorrectPassword] = useState(true)
+    const [showPassword, setShowPassword] = useState(false)
+
+    function handleKeyDown(e, nextIndexNuber) {
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            inputs.current[nextIndexNuber]?.focus()
+        }
+    }
 
     async function singup() {
-        if (useCheckPassword(password)) {
+        if (checkPassword(password)) {
             setCorrectPassword(true)
             if (password === repeatPassword) {
                 setCorrectPassword(true)
@@ -51,21 +60,37 @@ export default function SingupPage() {
                         type="text"
                         placeholder='Username'
                         onChange={(e) => setUsername(e.target.value)}
+                        ref={el => inputs.current[0] = el}
+                        onKeyDown={e => { handleKeyDown(e, 1) }}
                     />
                 </div>
                 <div className={styles.singupDiv}>
                     <img src="/img/password.png" className={styles.singupImg} /> <input className={styles.singupInp}
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
+
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
+                        ref={el => inputs.current[1] = el}
+                        onKeyDown={e => { handleKeyDown(e, 2) }}
                     />
+                    <div className={styles.showOrHidePasswordContainer} onClick={() => { setShowPassword(!showPassword) }}>
+                        <img src="/img/notHiddenPasswordIcon.png" className={`${styles.showOrHidePasswordIcon} ${!showPassword ? styles.invisible : styles.visible}`} />
+                        <img src="/img/hiddenPasswordIcon.png" className={`${styles.showOrHidePasswordIcon} ${showPassword ? styles.invisible : styles.visible}`} />
+                    </div>
                     <img src="/img/info.png" className={styles.infoImg} title={` Password must have atleast: \n •8 characters\n •one uppercase character\n •one number`} />
                 </div>
                 <div className={styles.singupDiv}>
                     <img src="/img/password.png" className={styles.singupImg} /> <input className={styles.singupInp}
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         placeholder='Repeat password'
                         onChange={(e) => setRepeatPassword(e.target.value)}
+                        ref={el => inputs.current[2] = el}
+                        onKeyDown={e => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault()
+                                singup()
+                            }
+                        }}
 
                     />
 

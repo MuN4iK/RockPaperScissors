@@ -1,4 +1,4 @@
-export default function useCheckPassword({ password }) {
+export default function CheckPassword(password) {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
     if (passwordRegex.test(password)) {
         return true
